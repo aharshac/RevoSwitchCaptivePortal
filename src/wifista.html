@@ -1,0 +1,50 @@
+<h3>WiFi Client</h3>
+<h4>Available Networks</h4>
+<div id="section-ap">
+    <br/><div class="sp sp-3balls"></div>
+    <script>loadSection("#section-ap", "aps");</script>
+    
+    <!-- List of connected clients (loaded dynamically) -->
+    <table class='tg list'>
+        <tr class="list-header">
+            <th class='c'>SSID</td>
+            <th class='c'>MAC</th>
+            <th class='c'>Strength</th>
+            <th class='c'> </th>
+        </tr>
+        <tr>
+            <td data-th="SSID"><a class="button">2017</a></td>
+            <td data-th="MAC">AA:BB:CC</td>
+            <td data-th="Strength">67%</td>
+            <td><span class='lock'></span></td>
+        </tr>
+        <tr>
+            <td data-th="SSID"><a class="button">2015</a></td>
+            <td data-th="MAC">AA:BB:CC</td>
+            <td data-th="Strength">67%</td>
+            <td><span class='lock'></span></td>
+        </tr>
+    </table>
+    <script>$("a.button").click(setAp);</script>
+</div>
+<br/>
+
+<h4>Selected Network</h4>
+<form id="sta" method="post" class="ajax" target="wifista.html" data-fn=onStaSubmit>
+    <table class='tg form'>
+        <tr class='i'>
+            <td>SSID</td>
+            <td><input id="stassid" name="ssid" value="%SSID%" type="text"></td>
+            <td></td>
+        </tr>
+        <tr class='i'>
+            <td>Password</td>
+            <td><input id="stapw" name="pw" value="%PW%" type="text"></td>
+        </tr>
+        <tr class='i'>
+            <td> </td>
+            <td><input value="Save" type="submit"></td>
+            <td>* Needs restart</td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,29 @@
+<h3>MQTT Settings</h3>
+
+<form id="sta" method="post" class="ajax" target="mqtt.html" data-fn=onMqttSubmit>
+    <table class='tg form'>
+        <tr class='i'>
+            <td>Server</td>
+            <td><input id="mqserver" name="server" value="%SERVER%" type="text"></td>
+            <td></td>
+        </tr>
+        <tr class='i'>
+            <td>Port</td>
+            <td><input id="mqport" name="port" value="%PORT%" type="text" maxlength="5"></td>
+        </tr>
+        <tr class='i'>
+            <td>User</td>
+            <td><input id="mquser" name="user" value="%USER%" type="text"></td>
+            <td></td>
+        </tr>
+        <tr class='i'>
+            <td>Password</td>
+            <td><input id="mqpw" name="pw" value="%PW%" type="text"></td>
+        </tr>
+        <tr class='i'>
+            <td> </td>
+            <td><input value="Save" type="submit"></td>
+            <td>* Needs restart</td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,14 @@
+{
+  "name": "node-live-server-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for live testing web apps.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Harsha Alva",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}
