@@ -2,14 +2,14 @@
 <h4>Settings</h4>
 <form method="post" class="ajax" target="wifiap.html" data-fn=onApSubmit>
     <table class='tg form'>
-        <tr class='i'>
-            <td class="c">SSID</td>
+        <tr class="input">
+            <td class="label bold">SSID</td>
             <td><input id="apssid" name="ssid" value="%SSID%" type="text" style="width:none"></td>
             <td>5 - 15 characters [a, 0, _, -]</td>
         </tr>
         
-        <tr class='i'>
-            <td class="c">Security</td>
+        <tr class="input">
+            <td class="label bold">Security</td>
             <td>
                 <select id="apsec" name="sec" onchange="onApSecChange">
                     <option value="o">Open</option>
@@ -22,13 +22,13 @@
             </script>
         </tr>
         
-        <tr class='i'>
-            <td class="c">Password</td>
+        <tr class="input">
+            <td class="label bold">Password</td>
             <td><input id="appw" name="pw" value="%PW%" type="text"></td>
             <td>8 - 15 alphanumeric characters [a, 0]</td>
         </tr>
 
-        <tr class='i'>
+        <tr class="input">
             <td> </td>
             <td><input value="Save" type="submit" name="submit"></td>
             <td>* Needs restart</td>
@@ -40,23 +40,23 @@
 
 <h4>Connected Devices</h4>
 <div id="section-stations">
-    <br/><div class="sp sp-3balls"></div>
+    <!-- <br/><div class="sp sp-3balls"></div> -->
     <script>loadSection("#section-stations", "dhcp");</script>
     
     <!-- List of scanned stations (loaded dynamically) -->
     <table class='tg list'>
         <tr class="list-header">
-            <th class='c'>Sl.</td>
-            <th class='c'>IP</td>
-            <th class='c'>MAC</th>
+            <th class='bold'>#</td>
+            <th class='bold'>IP</td>
+            <th class='bold'>MAC</th>
         </tr>
         <tr>
-            <td data-th="Sl.">2017</td>
+            <td data-th="#">2017</td>
             <td data-th="IP">192.168.1.100</td>
             <td data-th="MAC">AA:BB:CC</td>
         </tr>
         <tr>
-            <td data-th="Sl.">2017</td>
+            <td data-th="#">2017</td>
             <td data-th="IP">192.168.1.100</td>
             <td data-th="MAC">AA:BB:CC</td>
         </tr>

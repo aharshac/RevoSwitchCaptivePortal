@@ -1,14 +1,7 @@
-<h3>Reset Device</h3>
+<h3>Reboot Device</h3>
 
-
-<form id="sta" method="post" class="ajax" target="reboot.html">
-    <table class='tg form'>
-        <tr>
-            <td colspan="2">Do you wish to restart this RevoSwitch?</td>
-        </tr>
-        <tr class='i'>
-            <td><input value="Yes" type="submit" class="negative" name="submit"></td>
-            <td><input value="No" type="button" onclick="cancel()"></td>
-        </tr>
-    </table>
+<p class="prompt">Do you wish to reboot this RevoSwitch?</p>
+<form method="post" class="ajax" target="reboot.html">
+    <input value="Yes" type="submit" class="confirm negative" name="submit"></td>
+    <input value="No" type="button" class="confirm" onclick="cancel()">
 </form>

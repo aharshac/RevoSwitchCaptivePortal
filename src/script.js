@@ -1,3 +1,5 @@
+var spinnerText = '<div class="sp sp-3balls"></div>';
+
 /* Alert */
 function showAlert(msg) {
     $("#modalText").html(msg);
@@ -12,14 +14,17 @@ $("#modal").on('click', function() {
 
 /* Ajax page loading */
 function loadPage(page) {
+    $("#page").html(spinnerText);
     $("#page").load(page, function(response, status, xhr) {
         if (status == "error") {
             $("#page").html("<h3>Not found!</h3>");
         }
+        $("#modal").click();
     });
 }
 
 function loadSection(id, page) {
+    $(id).html(spinnerText);
     $(id).load(page, function(response, status, xhr) {
         if (status == "error") {
             $(id).html("Could not load!");
@@ -41,7 +46,8 @@ $(document).on('submit', 'form.ajax', function() {
         //console.log(target);
         //console.log($(this).serialize());
         $.post(target, $(this).serialize() + '&submit=true', function(data) {
-            showAlert(data);
+            showAlert("<div>" + data + "</div>");
+            if (data.indexOf("<b></b>") == -1) setTimeout(function() { loadPage(target); }, 500);
         });
         /*.always(function() {
             //loadPage(target);
@@ -53,8 +59,9 @@ $(document).on('submit', 'form.ajax', function() {
 
 /* Responsive sidebar and item loading */
 $("#toggle").click(function() {
-    var x = $("#nav");
-    x.css("display",  x.css("display") !== 'block' ? 'block' : 'none');
+    var nav = $("#nav");
+    nav.css("display",  nav.css("display") !== 'block' ? 'block' : 'none');
+    $("#pageHolder").css("display",  nav.css("display") == 'none' ? 'block' : 'none');
 });
 
 function loadMenuItem() {
@@ -70,14 +77,33 @@ function loadMenuItem() {
 function onResize() {
     $("#nav").css('display', $(window).width() > 700 ? 'block' : 'none');
     if ($(window).width() > 700) {
-        $("#nav").css("minHeight", "80vh");
+        $("#nav").css("minHeight", "70vh");
+        $("#pageHolder").css("minHeight", "70vh");
+        $("#pageHolder").css("display", 'block');
     }
 }
+
+$('#nav > a:not(".group")').click(function() {
+    if ($(window).width() < 700) $("#toggle").click();
+});
 
 $(window).on("hashchange", loadMenuItem);
 $(window).on("resize", onResize);
 loadMenuItem();
 onResize();
+
+
+/* Switch change */
+$(document).on('change', ".switch > input[type='checkbox']", function() {
+    var target = "switch.html";
+    //loadPage(link);
+    $.get(target, "switch=" + $(this).data('switch') + "&state=" + this.checked, function(data) {
+        showAlert(data);
+        if (data.indexOf("<b></b>") == -1) setTimeout(function() { loadPage(target); }, 500);
+    });
+    console.log(target);
+});
+
 
 /* AP click */
 function setAp() {
@@ -127,8 +153,8 @@ function onApSubmit() {
 
 function onStaSubmit() { 
     var p = $("#stapw").val();
-    if (p.length !=0 && (p.length < 8 || p.length > 32)) {
-        return "Password must be 8-32 characters long";
+    if (p.length !=0 && (p.length < 8 || p.length > 64)) {
+        return "Password must be 8-64 characters long";
     }
     return false;
 }

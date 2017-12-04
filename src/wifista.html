@@ -1,16 +1,16 @@
 <h3>WiFi Client</h3>
 <h4>Available Networks</h4>
 <div id="section-ap">
-    <br/><div class="sp sp-3balls"></div>
-    <script>loadSection("#section-ap", "aps");</script>
+    <div class="sp sp-3balls"></div> 
+    <script>//loadSection("#section-ap", "aps");</script>
     
     <!-- List of connected clients (loaded dynamically) -->
     <table class='tg list'>
         <tr class="list-header">
-            <th class='c'>SSID</td>
-            <th class='c'>MAC</th>
-            <th class='c'>Strength</th>
-            <th class='c'> </th>
+            <th class='bold'>SSID</td>
+            <th class='bold'>MAC</th>
+            <th class='bold'>Strength</th>
+            <th class='bold'> </th>
         </tr>
         <tr>
             <td data-th="SSID"><a class="button">2017</a></td>
@@ -30,18 +30,18 @@
 <br/>
 
 <h4>Selected Network</h4>
-<form id="sta" method="post" class="ajax" target="wifista.html" data-fn=onStaSubmit>
+<form method="post" class="ajax" target="wifista.html" data-fn=onStaSubmit>
     <table class='tg form'>
-        <tr class='i'>
-            <td>SSID</td>
+        <tr class="input">
+            <td class='label bold'>SSID</td>
             <td><input id="stassid" name="ssid" value="%SSID%" type="text"></td>
             <td></td>
         </tr>
-        <tr class='i'>
-            <td>Password</td>
+        <tr class="input">
+            <td class='label bold'>Password</td>
             <td><input id="stapw" name="pw" value="%PW%" type="text"></td>
         </tr>
-        <tr class='i'>
+        <tr class="input">
             <td> </td>
             <td><input value="Save" type="submit"></td>
             <td>* Needs restart</td>

@@ -1,50 +1,44 @@
 <h3>Switch</h3>
 
-<form id="switch" method="post" class="ajax" target="switch.html">
-    <table class='tg'>
-        <tr>
-            <th class='c'>Pin 0</td>
-            <th class='c'>Output A</td>
-            <th class='c'>
-                <label class="switch">
-                    <input type="checkbox" name="s0" checked="%S0%">
-                    <span class="slider"></span>
-                </label>
-            </th>
-        </tr>
-        <tr>
-            <td class='c'>Pin 2</td>
-            <td class='c'>Output B</td>
-            <td class='c'>
-                <label class="switch">
-                    <input type="checkbox" name="s1" checked="%S1%">
-                    <span class="slider"></span>
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td class='c'>Pin 4</td>
-            <td class='c'>Output C</td>
-            <td class='c'>
-                <label class="switch">
-                    <input type="checkbox" name="s2" checked="%S2%">
-                    <span class="slider"></span>
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td class='c'>Pin 5</td>
-            <td class='c'>Output D</td>
-            <td class='c'>
-                <label class="switch">
-                    <input type="checkbox" name="s3" checked="%S3%">
-                    <span class="slider"></span>
-                </label>
-            </td>
-        </tr>
-        
-        <tr class='i'>
-            <td colspan="3"><input value="Save" type="submit" name="submit"></td>
-        </tr>
-    </table>
-</form>
+<table class='tg'>
+    <tr>
+        <th class='label bold'>Pin 0</td>
+        <th class='label bold'>Output A</td>
+        <th>
+            <label class="switch">
+                <input type="checkbox" data-switch="0" %S0%>
+                <span class="slider"></span>
+            </label>
+        </th>
+    </tr>
+    <tr>
+        <td class='label bold'>Pin 2</td>
+        <td class='label bold'>Output B</td>
+        <td>
+            <label class="switch">
+                <input type="checkbox" data-switch="1" %S1%>
+                <span class="slider"></span>
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td class='label bold'>Pin 4</td>
+        <td class='label bold'>Output C</td>
+        <td>
+            <label class="switch">
+                <input type="checkbox" data-switch="2" %S2%>
+                <span class="slider"></span>
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td class='label bold'>Pin 5</td>
+        <td class='label bold'>Output D</td>
+        <td>
+            <label class="switch">
+                <input type="checkbox" data-switch="3" %S3%>
+                <span class="slider"></span>
+            </label>
+        </td>
+    </tr>
+</table>
