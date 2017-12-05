@@ -92,7 +92,7 @@ a {
     overflow: hidden;
     background-color: #3f3f3f;
     position: relative;
-    padding: 3px;
+    /* padding: 3px; */
     box-shadow: 0 0 8px #333;
     
     -moz-user-select: none;
@@ -124,8 +124,19 @@ a {
 
 
 .nav a.active {
+    position: relative;
     background-color: #111;
     color: white;
+}
+
+.nav a.active::after {
+    content: "";
+    width: 0.55em;
+    background-color: #2669bf;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 
@@ -152,7 +163,10 @@ a {
     margin-top: 1em;
 }
 
-
+.section {
+    margin-top: 1em;
+}
+    
 /* Table */
 .tg {
     border-collapse: collapse;
@@ -195,6 +209,11 @@ a {
 
 .tg td.prompt {
     display: inline-block;
+}
+
+.tg td.msg {
+    font-size: 0.85em;
+    color: #556;
 }
 
 .tg .bold {
@@ -262,7 +281,7 @@ input:checked + .slider:before {
 input[type=text], select {
     width: 100%;
     padding: 5px 10px;
-    margin: 4px 0;
+    margin: 4px 4px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -273,7 +292,7 @@ input[type=submit], input[type=button] {
     background-color: #2196F3;
     color: white;
     padding: 0.5em 10px;
-    margin: 4px 0;
+    margin: 4px 4px;
     border: none;
     cursor: pointer;
     font-size: 1em;

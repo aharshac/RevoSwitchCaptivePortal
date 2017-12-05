@@ -1,8 +1,8 @@
 <h3>WiFi Client</h3>
 <h4>Available Networks</h4>
-<div id="section-ap">
+<div id="section-ap"  class="section">
     <div class="sp sp-3balls"></div> 
-    <script>//loadSection("#section-ap", "aps");</script>
+    <script>loadSection("#section-ap", "aps");</script>
     
     <!-- List of connected clients (loaded dynamically) -->
     <table class='tg list'>
@@ -34,17 +34,18 @@
     <table class='tg form'>
         <tr class="input">
             <td class='label bold'>SSID</td>
-            <td><input id="stassid" name="ssid" value="%SSID%" type="text"></td>
-            <td></td>
+            <td><input id="stassid" name="ssid" value="%SSID%" type="text" pattern=".{1,32}" title="1 to 32 characters"></td>
+            <td class="msg">1 to 32 characters</td>
         </tr>
         <tr class="input">
             <td class='label bold'>Password</td>
-            <td><input id="stapw" name="pw" value="%PW%" type="text"></td>
+            <td><input id="stapw" name="pw" value="%PW%" type="text" pattern=".{0}|.{8,64}" title="Zero or 8 to 64 characters"></td>
+            <td class="msg">0 or 8 to 64 characters</td>
         </tr>
         <tr class="input">
             <td> </td>
             <td><input value="Save" type="submit"></td>
-            <td>* Needs restart</td>
+            <td class="msg">* Needs restart</td>
         </tr>
     </table>
 </form>

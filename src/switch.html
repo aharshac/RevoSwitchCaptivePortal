@@ -1,44 +1,51 @@
 <h3>Switch</h3>
 
-<table class='tg'>
-    <tr>
-        <th class='label bold'>Pin 0</td>
-        <th class='label bold'>Output A</td>
-        <th>
-            <label class="switch">
-                <input type="checkbox" data-switch="0" %S0%>
-                <span class="slider"></span>
-            </label>
-        </th>
-    </tr>
-    <tr>
-        <td class='label bold'>Pin 2</td>
-        <td class='label bold'>Output B</td>
-        <td>
-            <label class="switch">
-                <input type="checkbox" data-switch="1" %S1%>
-                <span class="slider"></span>
-            </label>
-        </td>
-    </tr>
-    <tr>
-        <td class='label bold'>Pin 4</td>
-        <td class='label bold'>Output C</td>
-        <td>
-            <label class="switch">
-                <input type="checkbox" data-switch="2" %S2%>
-                <span class="slider"></span>
-            </label>
-        </td>
-    </tr>
-    <tr>
-        <td class='label bold'>Pin 5</td>
-        <td class='label bold'>Output D</td>
-        <td>
-            <label class="switch">
-                <input type="checkbox" data-switch="3" %S3%>
-                <span class="slider"></span>
-            </label>
-        </td>
-    </tr>
-</table>
+<form method="post" class="ajax" target="switch.html" data-fn=onSwitchSubmit>
+    <table class='tg form'>
+        <tr class="input">
+            <td class="label bold">Output A</td>
+            <td><input id="S0" name="S0" value="%S0%" type="text" pattern=".{0,16}" title="Up to 16 characters"></td>
+            <td class="msg">Up to 16 characters</td>
+        </tr>
+        <tr class="input">
+            <td class="label bold">Output B</td>
+            <td><input id="S1" name="S1" value="%S1%" type="text" pattern=".{0,16}" title="Up to 16 characters"></td>
+            <td class="msg">Up to 16 characters</td>
+        </tr>
+        <tr class="input">
+            <td class="label bold">Output C</td>
+            <td><input id="S2" name="S2" value="%S2%" type="text" pattern=".{0,16}" title="Up to 16 characters"></td>
+            <td class="msg">Up to 16 characters</td>
+        </tr>
+        <tr class="input">
+            <td class="label bold">Output D</td>
+            <td><input id="S3" name="S3" value="%S3%" type="text" pattern=".{0,16}" title="Up to 16 characters"></td>
+            <td class="msg">Up to 16 characters</td>
+        </tr>
+        <tr class="input">
+            <td class="label bold">Output E</td>
+            <td><input id="S4" name="S4" value="%S4%" type="text" pattern=".{0,16}" title="Up to 16 characters"></td>
+            <td class="msg">Up to 16 characters</td>
+        </tr>
+        <tr class="input">
+            <td class="label bold">Output F</td>
+            <td><input id="S5" name="S5" value="%S5%" type="text" pattern=".{0,16}" title="Up to 16 characters"></td>
+            <td class="msg">Up to 16 characters</td>
+        </tr>
+        <tr class="input">
+            <td class="label bold">Output G</td>
+            <td><input id="S6" name="S6" value="%S6%" type="text" pattern=".{0,16}" title="Up to 16 characters"></td>
+            <td class="msg">Up to 16 characters</td>
+        </tr>
+        <tr class="input">
+            <td class="label bold">Output H</td>
+            <td><input id="S7" name="S7" value="%S7%" type="text" pattern=".{0,16}" title="Up to 16 characters"></td>
+            <td class="msg">Up to 16 characters</td>
+        </tr>
+        <tr class="input">
+            <td> </td>
+            <td><input value="Save" type="submit"></td>
+            <td class="msg"> </td>
+        </tr>
+    </table>
+</form>

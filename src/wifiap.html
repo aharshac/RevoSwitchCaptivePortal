@@ -4,8 +4,8 @@
     <table class='tg form'>
         <tr class="input">
             <td class="label bold">SSID</td>
-            <td><input id="apssid" name="ssid" value="%SSID%" type="text" style="width:none"></td>
-            <td>5 - 15 characters [a, 0, _, -]</td>
+            <td><input id="apssid" name="ssid" value="%SSID%" type="text" pattern="[A-Za-z0-9_\-]{5,15}" title="5 to 15 alphanumeric, hyphen and underscore characters"></td>
+            <td class="msg">5 to 15 characters [a, 0, _, -]</td>
         </tr>
         
         <tr class="input">
@@ -24,14 +24,14 @@
         
         <tr class="input">
             <td class="label bold">Password</td>
-            <td><input id="appw" name="pw" value="%PW%" type="text"></td>
-            <td>8 - 15 alphanumeric characters [a, 0]</td>
+            <td><input id="appw" name="pw" value="%PW%" type="text" pattern="[A-Za-z0-9]{8,15}" title="8 to 15 alphanumeric characters"></td>
+            <td class="msg">8 to 15 alphanumeric characters [a, 0]</td>
         </tr>
 
         <tr class="input">
             <td> </td>
             <td><input value="Save" type="submit" name="submit"></td>
-            <td>* Needs restart</td>
+            <td class="msg">* Needs restart</td>
         </tr>
     </table>
 </form>
@@ -39,7 +39,7 @@
 <br/>
 
 <h4>Connected Devices</h4>
-<div id="section-stations">
+<div id="section-stations" class="section">
     <!-- <br/><div class="sp sp-3balls"></div> -->
     <script>loadSection("#section-stations", "dhcp");</script>
     

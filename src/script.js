@@ -38,7 +38,7 @@ $(document).on('submit', 'form.ajax', function() {
     var fn = $(this).data('fn');
     console.log(fn);
     var error = fn && eval(fn);
-    if (error) error = error();
+    if (error) error = error($(this));
     //console.log(error);
     if (error) {
         showAlert(error);
@@ -67,7 +67,7 @@ $("#toggle").click(function() {
 function loadMenuItem() {
     var hash = location.hash;
     if (hash.length > 0) hash = hash.substr(1);
-    if (hash == "") hash = "switch";
+    if (hash == "") hash = "home";
     loadPage(hash + ".html");
     $('#nav > a:not(".group")').each(function(i, v) { 
         $(v).attr('class', $(v).attr('href').substr(1) == hash ? 'active' : ''); 
@@ -95,7 +95,7 @@ onResize();
 
 /* Switch change */
 $(document).on('change', ".switch > input[type='checkbox']", function() {
-    var target = "switch.html";
+    var target = "home.html";
     //loadPage(link);
     $.get(target, "switch=" + $(this).data('switch') + "&state=" + this.checked, function(data) {
         showAlert(data);
@@ -112,11 +112,11 @@ function setAp() {
 
 /* Confirmation */
 function restart() { window.location = "restart.html"; }
-function cancel() { window.location.hash = "#switch"; }
+function cancel() { window.location.hash = "#home"; }
 
 
 /* Reload page content */
-setInterval(loadMenuItem, 60000);
+// setInterval(loadMenuItem, 60000);
 
 
 /* Input validation */
@@ -124,15 +124,16 @@ var regexSsid = /[^a-z0-9\-\_]/gi;
 var regexAlphanum = /[^a-z0-9]/gi;
 var regexNum = /[^0-9]/gi;
 var regexServer = /([a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+)*)/gi;
+var regexSwitch = /.{0,16}/gi;
 
-function onApSecChange() {
+function onApSecChange(form) {
     if ($("#apsec").val() == "o")
         $("#appw").attr("disabled", "disabled");
     else
         $("#appw").removeAttr("disabled");
 }
 
-function onApSubmit() { 
+function onApSubmit(form) { 
     var a = $("#apssid").val();
     var p = $("#appw").val();
     
@@ -151,17 +152,21 @@ function onApSubmit() {
     return false;
 } 
 
-function onStaSubmit() { 
+function onStaSubmit(form) { 
+    var s = $("#stassid").val();
     var p = $("#stapw").val();
+    if (s.length < 1 || s.length > 32) {
+        return "SSID must be 1-32 characters long";
+    }
     if (p.length !=0 && (p.length < 8 || p.length > 64)) {
         return "Password must be 8-64 characters long";
     }
     return false;
 }
 
-function onMqttSubmit() { 
+function onMqttSubmit(form) { 
     var server = $("#mqserver").val();
-    var port = $("#mpport").val();
+    var port = $("#mqport").val();
     var user = $("#mquser").val();
     var pw = $("#mqpw").val();
     
@@ -171,17 +176,26 @@ function onMqttSubmit() {
     if (port.match(regexNum)) {
         return "Invalid Port.";
     }
-    if (server.length < 5 || server.length > 60) {
-        return "Server must be 5-60 characters long.";
+    if (server.length < 5 || server.length > 32) {
+        return "Server must be 5 to 32 characters long.";
     }
-    if (port.length > 5) {
-        return "Port must be less than 5 digits.";
+    if (port.length < 3 || port.length > 5 || isNaN(port)) {
+        return "Port must be 3 to 5 digits long.";
     }
-    if (user.length > 5) {
-        return "User must be greater than 5 characters.";
+    if (user.length > 32) {
+        return "User must be less than 32 characters.";
     }
-    if (pw.length > 5) {
-        return "Password must be greater than 5 characters.";
+    if (pw.length > 32) {
+        return "Password must be less than 32 characters.";
     }
+    return false;
+}
+
+function onSwitchSubmit(form) { 
+    form.children('input[type="text"]').each(function () {
+        if (!this.value.match(regexSwitch)) {
+            return "Invalid input.";
+        }
+    });
     return false;
 }

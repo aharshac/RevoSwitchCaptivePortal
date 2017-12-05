@@ -1,29 +1,31 @@
 <h3>MQTT Settings</h3>
 
-<form id="sta" method="post" class="ajax" target="mqtt.html" data-fn=onMqttSubmit>
+<form method="post" class="ajax" target="mqtt.html" data-fn=onMqttSubmit>
     <table class='tg form'>
         <tr class="input">
             <td class="label bold">Server</td>
-            <td><input id="mqserver" name="server" value="%SERVER%" type="text"></td>
-            <td></td>
+            <td><input id="mqserver" name="server" value="%SERVER%" type="text" maxlength="32" pattern="^(?!:\/\/)([a-zA-Z0-9]+\.)?[a-zA-Z0-9][a-zA-Z0-9-]+\.[a-zA-Z]{2,15}?$" title="5 to 32 characters"></td>
+            <td class="msg">5 to 32 characters</td>
         </tr>
         <tr class="input">
             <td class="label bold">Port</td>
-            <td><input id="mqport" name="port" value="%PORT%" type="text" maxlength="5"></td>
+            <td><input id="mqport" name="port" value="%PORT%" type="text" pattern="[0-9]{3,5}" title="3 to 5 digits"></td>
+            <td class="msg">3 to 5 digits</td>
         </tr>
         <tr class="input">
             <td class="label bold">User</td>
-            <td><input id="mquser" name="user" value="%USER%" type="text"></td>
-            <td></td>
+            <td><input id="mquser" name="user" value="%USER%" type="text" pattern=".{0,32}" title="Up to 32 characters"></td>
+            <td class="msg">Up to 32 characters</td>
         </tr>
         <tr class="input">
             <td class="label bold">Password</td>
-            <td><input id="mqpw" name="pw" value="%PW%" type="text"></td>
+            <td><input id="mqpw" name="pw" value="%PW%" type="text" pattern=".{0,32}" title="Up to 32 characters"></td>
+            <td class="msg">Up to 32 characters</td>
         </tr>
         <tr class="input">
             <td> </td>
             <td><input value="Save" type="submit"></td>
-            <td>* Needs restart</td>
+            <td class="msg">* Needs restart</td>
         </tr>
     </table>
 </form>
