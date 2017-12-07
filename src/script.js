@@ -1,4 +1,7 @@
-var spinnerText = '<div class="sp sp-3balls"></div>';
+var txtNoReset = "<b></b>";
+var txtSpinner = '<div class="sp sp-3balls"></div>';
+
+var tmr = [];
 
 /* Alert */
 function showAlert(msg) {
@@ -14,7 +17,7 @@ $("#modal").on('click', function() {
 
 /* Ajax page loading */
 function loadPage(page) {
-    $("#page").html(spinnerText);
+    $("#page").html(txtSpinner);
     $("#page").load(page, function(response, status, xhr) {
         if (status == "error") {
             $("#page").html("<h3>Not found!</h3>");
@@ -24,7 +27,7 @@ function loadPage(page) {
 }
 
 function loadSection(id, page) {
-    $(id).html(spinnerText);
+    $(id).html(txtSpinner);
     $(id).load(page, function(response, status, xhr) {
         if (status == "error") {
             $(id).html("Could not load!");
@@ -43,15 +46,11 @@ $(document).on('submit', 'form.ajax', function() {
     if (error) {
         showAlert(error);
     } else {
-        //console.log(target);
-        //console.log($(this).serialize());
         $.post(target, $(this).serialize() + '&submit=true', function(data) {
             showAlert("<div>" + data + "</div>");
-            if (data.indexOf("<b></b>") == -1) setTimeout(function() { loadPage(target); }, 500);
+            if (data.indexOf(txtNoReset) == -1) tm.push(setTimeout(function() { loadPage(target); }, 500));
+            
         });
-        /*.always(function() {
-            //loadPage(target);
-        });*/
     }
     return false;
 });
@@ -64,13 +63,14 @@ $("#toggle").click(function() {
     $("#pageHolder").css("display",  nav.css("display") == 'none' ? 'block' : 'none');
 });
 
-function loadMenuItem() {
-    var hash = location.hash;
-    if (hash.length > 0) hash = hash.substr(1);
-    if (hash == "") hash = "home";
+function loadMenuItem(hash = false) {
+    //var hash = location.hash;
+    //if (hash.length > 0) hash = hash.substr(1);
+    if (!hash) hash = "home";
     loadPage(hash + ".html");
     $('#nav > a:not(".group")').each(function(i, v) { 
-        $(v).attr('class', $(v).attr('href').substr(1) == hash ? 'active' : ''); 
+        //$(v).attr('class', $(v).attr('href').substr(1) == hash ? 'active' : ''); 
+        $(v).attr('class', $(v).data('src') == hash ? 'active' : ''); 
     });
 }
 
@@ -84,10 +84,11 @@ function onResize() {
 }
 
 $('#nav > a:not(".group")').click(function() {
+    loadMenuItem(this ? $(this).data('src') : false);
     if ($(window).width() < 700) $("#toggle").click();
 });
 
-$(window).on("hashchange", loadMenuItem);
+//$(window).on("hashchange", loadMenuItem);
 $(window).on("resize", onResize);
 loadMenuItem();
 onResize();
@@ -99,7 +100,7 @@ $(document).on('change', ".switch > input[type='checkbox']", function() {
     //loadPage(link);
     $.get(target, "switch=" + $(this).data('switch') + "&state=" + this.checked, function(data) {
         showAlert(data);
-        if (data.indexOf("<b></b>") == -1) setTimeout(function() { loadPage(target); }, 500);
+        if (data.indexOf(txtNoReset) == -1) tmr.push(setTimeout(function() { loadPage(target); }, 500));
     });
     console.log(target);
 });

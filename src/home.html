@@ -1,19 +1,19 @@
 <h3>Home</h3>
-
-<table class='tg'>
+<h4>Switchboard</h4>
+<table class='tg collapse' id="tgHome">
     <tr>
-        <th class='label bold'>Output A</td>
-        <th class='label bold'>%S0%</td>
-        <th>
+        <td class='label bold'>Output A</td>
+        <td class='label bold'>%S0%</td>
+        <td>
             <label class="switch">
                 <input type="checkbox" data-switch="0" %O0%>
                 <span class="slider"></span>
             </label>
-        </th>
+        </td>
     </tr>
     <tr>
         <td class='label bold'>Output B</td>
-        <th class='label bold'>%S1%</td>
+        <td class='label bold'>%S1%</td>
         <td>
             <label class="switch">
                 <input type="checkbox" data-switch="1" %O1%>
@@ -23,7 +23,7 @@
     </tr>
     <tr>
         <td class='label bold'>Output C</td>
-        <th class='label bold'>%S2%</td>
+        <td class='label bold'>%S2%</td>
         <td>
             <label class="switch">
                 <input type="checkbox" data-switch="2" %O2%>
@@ -33,7 +33,7 @@
     </tr>
     <tr>
         <td class='label bold'>Output D</td>
-        <th class='label bold'>%S3%</td>
+        <td class='label bold'>%S3%</td>
         <td>
             <label class="switch">
                 <input type="checkbox" data-switch="3" %O3%>
@@ -42,18 +42,18 @@
         </td>
     </tr>
     <tr>
-        <th class='label bold'>Output E</td>
-        <th class='label bold'>%S4%</td>
-        <th>
+        <td class='label bold'>Output E</td>
+        <td class='label bold'>%S4%</td>
+        <td>
             <label class="switch">
                 <input type="checkbox" data-switch="4" %O4%>
                 <span class="slider"></span>
             </label>
-        </th>
+        </td>
     </tr>
     <tr>
         <td class='label bold'>Output F</td>
-        <th class='label bold'>%S5%</td>
+        <td class='label bold'>%S5%</td>
         <td>
             <label class="switch">
                 <input type="checkbox" data-switch="5" %O5%>
@@ -63,7 +63,7 @@
     </tr>
     <tr>
         <td class='label bold'>Output G</td>
-        <th class='label bold'>%S6%</td>
+        <td class='label bold'>%S6%</td>
         <td>
             <label class="switch">
                 <input type="checkbox" data-switch="6" %O6%>
@@ -73,7 +73,7 @@
     </tr>
     <tr>
         <td class='label bold'>Output H</td>
-        <th class='label bold'>%S7%</td>
+        <td class='label bold'>%S7%</td>
         <td>
             <label class="switch">
                 <input type="checkbox" data-switch="7" %O7%>
@@ -82,3 +82,39 @@
         </td>
     </tr>
 </table>
+
+<div style="display: %S_ULINK%;">
+    <h4>Web Interface Link</h4>
+    <div class="uurl">
+        <a href="%ULINK%" target="_blank" title="RevoSwitch-%SERIAL% web interface link">%ULINK%</a>
+    </div>
+</div>
+
+<script>
+    function dynamicWidth() {
+        if ($(window).width() < 700) return;
+        
+        var listCol1 = $("#tgHome td:nth-child(2n+1)");
+        var listCol2 = $("#tgHome td:nth-child(2n)");
+        
+        var max = function(list) {
+            return Math.max.apply(null, list.map(function() {
+                return $(this).width();
+            }).get());
+        }
+        
+        var set = function(list, max) {
+            list.each(function(i, v) { 
+                $(v).width(max);
+            });
+        }
+        
+        var maxCol1 = max(listCol1);
+        var maxCol2 = max(listCol2);
+            
+        set(listCol1, maxCol1);
+        set(listCol2, maxCol2);
+    }
+    $(window).on("resize", dynamicWidth);
+    dynamicWidth();
+</script>
