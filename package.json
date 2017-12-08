@@ -4,11 +4,13 @@
   "description": "Boilerplate for live testing web apps.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "min": "node node_modules/html-minifier/cli.js --input-dir src --output-dir build"
   },
   "author": "Harsha Alva",
   "license": "ISC",
   "devDependencies": {
+    "html-minifier": "^3.5.7",
     "live-server": "^1.2.0"
   }
 }

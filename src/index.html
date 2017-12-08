@@ -2,18 +2,22 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="Captive portal for RevoSwitch-%SERIAL%">
+        <meta name="description" content="Captive portal for RevoSwitch-~SERIAL~">
         <meta name="keywords" content="RevoSwitch">
         <meta name="author" content="Harsha Alva">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-        <title>RevoSwitch-%SERIAL%</title>
-        <link rel="stylesheet" href="style.css?%FW%">
-        <script type="text/javascript" src="jquery-3.2.1.min.js?%FW%"></script>
+        <title>RevoSwitch-~SERIAL~</title>
+        <link rel="stylesheet" href="style.css?~FW~">
+        <script type="text/javascript" src="jquery-3.2.1.min.js?~FW~"></script>
+        
+        <style>
+.page-load-spinner{width:40px;height:40px;margin:100px auto;background-color:#111;border-radius:100%;-webkit-animation:sk-scaleout 1s infinite ease-in-out;animation:sk-scaleout 1s infinite ease-in-out}@-webkit-keyframes sk-scaleout{0%{-webkit-transform:scale(0)}100%{-webkit-transform:scale(1);opacity:0}}@keyframes sk-scaleout{0%{-webkit-transform:scale(0);transform:scale(0)}100%{-webkit-transform:scale(1);transform:scale(1);opacity:0}}
+        </style>
     </head>
 
     <body>
-        <div class="wrapper">
+        <div class="wrapper" id="wrapper" style="display:none">
             <div id="modal" class="modal">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -24,8 +28,8 @@
 
             <div class="header">
                 <a href="javascript:void(0);" class="icon" id="toggle">&#9776;</a>
-                <span class="title no-select">RevoSwitch-%SERIAL%</span>
-                <a class="cloud no-select" href="%ULINK%" target="_blank" title="RevoSwitch-%SERIAL% web interface link" style="display: %S_ULINK%;">&#9729;</a> 
+                <span class="title no-select">RevoSwitch-~SERIAL~</span>
+                <a class="cloud no-select" href="~ULINK~" target="_blank" title="RevoSwitch-~SERIAL~ web interface link" style="display: ~S_ULINK~;">&#9729;</a> 
             </div> 
             
             <div class="content">
@@ -44,7 +48,6 @@
                     <a data-src="about" href="#">About</a>
                 </div> 
                 
-                 
                 <div class="page-holder" id="pageHolder">
                     <div id="page"></div>
                 </div>
@@ -53,11 +56,10 @@
             <div class="footer">
                 <span class="title no-select"><a href="https://alvaharsha.com" target="_blank">Harsha Alva</a></span>
             </div>
-            
-            <script type="text/javascript" src="script.js?%FW%"></script>
+            <script type="text/javascript" src="script.js?~FW~"></script>
         </div>
         
-        <div class="restart-modal" id="rebootModal">
+        <div class="restart-modal" id="rebootModal" style="display:none;">
             <div class="progress">
                 <p>Restarting in <span id="time">30</span>s...</p>
                 <div class="progress-track">
@@ -66,31 +68,17 @@
             </div>
             
             <script>
-                var time = 30;
-                var percent = 0;
-                var bar = $("#progressBar");
-                var timerid = -1;
-                
-                function incrementPercent() {
-                    if (percent >= 100) {
-                        clearInterval(timerId);
-                        window.location.href = '/';
-                    } else {
-                        percent++;
-                        $("#time").text(time - Math.round(time/100 * percent));
-                        bar.css("width", percent + '%');
-                    }
-                }
+                function incrementPercent(){percent>=100?(clearInterval(timerId),window.location.href="/"):(percent++,$("#time").text(time-Math.round(time/100*percent)),bar.css("width",percent+"%"))}function showRebootWait(){$.each(tmr,function(e,t){window.clearTimeout(t)}),tmr=[],$("#rebootModal").css("display","flex"),bar.css("width","0"),timerId=setInterval(incrementPercent,10*time)}var time=30,percent=0,bar=$("#progressBar"),timerid=-1;
+            </script>
+        </div>
 
-                function showRebootWait() {
-                    $.each(tmr, function(i,v) { window.clearTimeout(v); });
-                    tmr = [];
-                    $("#rebootModal").css("display", "flex");
-                    bar.css("width", '0');
-                    timerId = setInterval(incrementPercent, time * 10); // time * 1000 / 100;
-                }
-                
-                //setTimeout(showRebootWait, 5000);
+        
+        <div id="loadingModal" style="background:#fff;height:100%;width:100%;display:flex;justify-content:center;align-items:center;z-index:90;position:absolute;top:0;">
+            <div style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:left;">
+                <div class="page-load-spinner"></div>
+            </div>
+            <script> 
+                function showContent(){$("#loadingModal").css("display","none"),$("#wrapper").css("display","flex")}$(window).on("load",function(){window.setTimeout(showContent,500)});
             </script>
         </div>
     </body>

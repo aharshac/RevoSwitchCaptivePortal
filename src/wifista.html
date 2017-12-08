@@ -1,31 +1,7 @@
 <h3>WiFi Client</h3>
 <h4>Available Networks</h4>
 <div id="section-ap"  class="section">
-    <div class="sp sp-3balls"></div> 
-    <script>loadSection("#section-ap", "aps");</script>
-    
-    <!-- List of connected clients (loaded dynamically) -->
-    <table class='tg list'>
-        <tr class="list-header">
-            <th class='bold'>SSID</th>
-            <th class='bold'>MAC</th>
-            <th class='bold'>Strength</th>
-            <th class='bold'> </th>
-        </tr>
-        <tr>
-            <td data-th="SSID"><a class="button">2017</a></td>
-            <td data-th="MAC">AA:BB:CC</td>
-            <td data-th="Strength">67%</td>
-            <td><span class='lock'></span></td>
-        </tr>
-        <tr>
-            <td data-th="SSID"><a class="button">2015</a></td>
-            <td data-th="MAC">AA:BB:CC</td>
-            <td data-th="Strength">67%</td>
-            <td><span class='lock'></span></td>
-        </tr>
-    </table>
-    <script>$("a.button").click(setAp);</script>
+    <script>loadSection("#section-ap", "apscan.html");</script>
 </div>
 <br/>
 
@@ -34,12 +10,12 @@
     <table class='tg form'>
         <tr class="input">
             <td class='label bold'>SSID</td>
-            <td><input id="stassid" name="ssid" value="%SSID%" type="text" pattern=".{1,32}" title="1 to 32 characters"></td>
+            <td><input id="stassid" name="ssid" value="~SSID~" type="text" pattern=".{1,32}" title="1 to 32 characters"></td>
             <td class="msg">1 to 32 characters</td>
         </tr>
         <tr class="input">
             <td class='label bold'>Password</td>
-            <td><input id="stapw" name="pw" value="%PW%" type="text" pattern=".{0}|.{8,64}" title="Zero or 8 to 64 characters"></td>
+            <td><input id="stapw" name="pw" value="~PW~" type="text" pattern=".{0}|.{8,64}" title="Zero or 8 to 64 characters"></td>
             <td class="msg">0 or 8 to 64 characters</td>
         </tr>
         <tr class="input">

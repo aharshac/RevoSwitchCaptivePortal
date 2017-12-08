@@ -6,7 +6,7 @@
             <td class="label bold">SSID</td>
             <td>
                 <span style="margin-left: 5px;font-weight: 600;font-style: italic;">RevoSwitch-</span>
-                <input id="apssid" name="ssid" value="%SSID%" type="text" pattern="[A-Za-z0-9_\-]{5,15}" title="5 to 15 alphanumeric, hyphen and underscore characters" style="display: inline-block;width: auto;margin: 4px 0;">
+                <input id="apssid" name="ssid" value="~SSID~" type="text" pattern="[A-Za-z0-9_\-]{5,15}" title="5 to 15 alphanumeric, hyphen and underscore characters" style="display: inline-block;width: auto;margin: 4px 0;">
             </td>
             <td class="msg">5 to 15 characters [a, 0, _, -]</td>
         </tr>
@@ -20,14 +20,14 @@
                 </select> 
             </td>
             <script>
-                $("#apsec").change(onApSecChange).val("%SEC%");
+                $("#apsec").change(onApSecChange).val("~SEC~");
                 onApSecChange();
             </script>
         </tr>
         
         <tr class="input">
             <td class="label bold">Password</td>
-            <td><input id="appw" name="pw" value="%PW%" type="text" pattern="[A-Za-z0-9]{8,15}" title="8 to 15 alphanumeric characters"></td>
+            <td><input id="appw" name="pw" value="~PW~" type="text" pattern="[A-Za-z0-9]{8,15}" title="8 to 15 alphanumeric characters"></td>
             <td class="msg">8 to 15 alphanumeric characters [a, 0]</td>
         </tr>
 
@@ -43,25 +43,5 @@
 
 <h4>Connected Devices</h4>
 <div id="section-stations" class="section">
-    <!-- <br/><div class="sp sp-3balls"></div> -->
-    <script>loadSection("#section-stations", "dhcp");</script>
-    
-    <!-- List of scanned stations (loaded dynamically) -->
-    <table class='tg list'>
-        <tr class="list-header">
-            <th class='bold'>#</td>
-            <th class='bold'>IP</td>
-            <th class='bold'>MAC</th>
-        </tr>
-        <tr>
-            <td data-th="#">2017</td>
-            <td data-th="IP">192.168.1.100</td>
-            <td data-th="MAC">AA:BB:CC</td>
-        </tr>
-        <tr>
-            <td data-th="#">2017</td>
-            <td data-th="IP">192.168.1.100</td>
-            <td data-th="MAC">AA:BB:CC</td>
-        </tr>
-    </table>
+    <script>loadSection("#section-stations", "dhcp.html");</script>    
 <div>

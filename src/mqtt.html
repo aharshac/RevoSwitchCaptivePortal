@@ -4,22 +4,22 @@
     <table class='tg form'>
         <tr class="input">
             <td class="label bold">Server</td>
-            <td><input id="mqserver" name="server" value="%SERVER%" type="text" maxlength="32" pattern="^(?!:\/\/)([a-zA-Z0-9]+\.)?[a-zA-Z0-9][a-zA-Z0-9-]+\.[a-zA-Z]{2,15}?$" title="5 to 32 characters"></td>
+            <td><input id="mqserver" name="server" value="~SERVER~" type="text" maxlength="32" pattern="^(?!:\/\/)([a-zA-Z0-9]+\.)?[a-zA-Z0-9][a-zA-Z0-9-]+\.[a-zA-Z]{2,15}?$" title="5 to 32 characters"></td>
             <td class="msg">5 to 32 characters</td>
         </tr>
         <tr class="input">
             <td class="label bold">Port</td>
-            <td><input id="mqport" name="port" value="%PORT%" type="text" pattern="[0-9]{3,5}" title="3 to 5 digits"></td>
+            <td><input id="mqport" name="port" value="~PORT~" type="text" pattern="[0-9]{3,5}" title="3 to 5 digits"></td>
             <td class="msg">3 to 5 digits</td>
         </tr>
         <tr class="input">
             <td class="label bold">User</td>
-            <td><input id="mquser" name="user" value="%USER%" type="text" pattern=".{0,32}" title="Up to 32 characters"></td>
+            <td><input id="mquser" name="user" value="~USER~" type="text" pattern=".{0,32}" title="Up to 32 characters"></td>
             <td class="msg">Up to 32 characters</td>
         </tr>
         <tr class="input">
             <td class="label bold">Password</td>
-            <td><input id="mqpw" name="pw" value="%PW%" type="text" pattern=".{0,32}" title="Up to 32 characters"></td>
+            <td><input id="mqpw" name="pw" value="~PW~" type="text" pattern=".{0,32}" title="Up to 32 characters"></td>
             <td class="msg">Up to 32 characters</td>
         </tr>
         <tr class="input">
