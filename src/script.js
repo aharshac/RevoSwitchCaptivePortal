@@ -48,7 +48,7 @@ $(document).on('submit', 'form.ajax', function() {
     } else {
         $.post(target, $(this).serialize() + '&submit=true', function(data) {
             showAlert("<div>" + data + "</div>");
-            if (data.indexOf(txtNoReset) == -1) tm.push(setTimeout(function() { loadPage(target); }, 500));
+            if (data.indexOf(txtNoReset) == -1) tmr.push(setTimeout(function() { loadPage(target); }, 500));
             
         });
     }
