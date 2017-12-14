@@ -321,7 +321,7 @@ input:checked + .slider:before {
 }
 
 /* Buttons */
-input[type=text], select, .uurl {
+input[type=text], select, .url-box {
     width: 100%;
     padding: 5px 10px;
     margin: 4px 4px;
@@ -360,12 +360,11 @@ input[type=submit].confirm, input[type=button].confirm {
 
 
 /* Unique link textarea */
-.uurl {
+.url-box {
     max-width: 40em;
     width: 100%;
     background: #d8d8d8;
-    margin-top: 1em;
-    padding: 1em;
+    padding: 0.7em;
     
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -374,12 +373,12 @@ input[type=submit].confirm, input[type=button].confirm {
     word-break: break-word;
 }
 
-.uurl a {
+.url-box a, a.url {
     text-decoration: underline;
     color: #2669bf;
 }
 
-.uurl a:hover {
+.url-box a:hover, a.url:hover {
     color: red;
 }
 
