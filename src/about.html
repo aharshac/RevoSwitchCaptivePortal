@@ -1,7 +1,7 @@
 <h3>About Device</h3>
 
-<h4>Status and Parameters</h4>
 <table class='tg'>
+    <tr colspan='2'><td><h4>Device</h4></td></tr>
     <tr>
         <td class='label bold'>Serial Number</td>
         <td class=''>~SERIAL~</td>
@@ -18,27 +18,42 @@
         <td class='label bold'>Free Memory</td>
         <td class=''>~MEM~</td>
     </tr>
+
+    <tr colspan='2'><td><h4>WiFi Access Point</h4></td></tr>
     <tr>
-        <td class='label bold'>WiFi AP</td>
-        <td class='~S_WIFI_AP~'>~WIFI_AP~</td>
+        <td class='label bold'>Status</td>
+        <td class='~S_AP~'>~AP~</td>
     </tr>
+    <tr class='display: ~V_AP_IP~'>
+        <td class='label bold'>IP Address</td>
+        <td class='success'>~AP_IP~</td>
+    </tr>
+
+    <tr colspan='2'><td><h4>WiFi Station</h4></td></tr>
     <tr>
-        <td class='label bold'>WiFi Station</td>
-        <td class='~S_WIFI~'>~WIFI~</td>
+        <td class='label bold'>Status</td>
+        <td class='~S_STA~'>~STA~</td>
+    </tr>
+    <tr class='display: ~V_STA_IP~'>
+        <td class='label bold'>IP Address</td>
+        <td class='success'>~STA_IP~</td>
     </tr>
     <tr>
         <td class='label bold'>mDNS</td>
         <td class='~S_MDNS~'>~MDNS~</td>
     </tr>
+
+
+    <tr colspan='2'><td><h4>Connectivity</h4></td></tr>
     <tr>
         <td class='label bold'>Internet</td>
-        <td class='~S_INTERNET~'>~INTERNET~</td>
+        <td class='~S_NET~'>~NET~</td>
     </tr>
     <tr>
         <td class='label bold'>MQTT</td>
         <td class='~S_MQTT~'>~MQTT~</td>
     </tr>
-    <tr style="display: ~S_ULINK~;">
+    <tr style="display: ~V_ULINK~;">
         <td class='label bold' style="vertical-align:top;">Web Client URL</td>
         <td style="max-width: 40em;word-break: break-all;">
             <a href="~ULINK~" target="_blank" title="RevoSwitch-~SERIAL~ Web Client URL" class="url">~ULINK~</a>
